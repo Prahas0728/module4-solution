@@ -1,0 +1,153 @@
+Program 1 – Git Basic Commands
+
+Creating local and remote repository using GitBash and GitHub
+
+Git Configuration
+git config --global user.name "username"
+git config --global user.email "yourmail@gmail.com"
+git config --list
+Create Project Directory
+mkdir myproject
+cd myproject
+Initialize Repository
+git init
+Check Repository Status
+git status
+Create File
+touch index.txt
+Add Files
+git add index.txt
+git add .
+Commit Changes
+git commit -m "First commit"
+Check Commit History
+git log
+Add Remote Repository
+git remote add origin https://github.com/username/myproject.git
+Rename Branch
+git branch -M master
+Push to GitHub
+git push -u origin master
+Clone Repository
+git clone https://github.com/username/myproject.git
+Reset Repository
+git reset --hard
+git reset --soft HEAD~1
+
+
+Program 2 – Branching, Merge, Fork, Diff
+Create Directory
+mkdir lab2
+cd lab2
+Create File
+echo "version 1" > file.txt
+Add Files
+git add .
+Commit
+git commit -m "initial commit"
+Create and Switch Branch
+git checkout -b feature
+Add Changes in Feature Branch
+echo "feature version" > file1.txt
+git add .
+git commit -m "change in feature"
+Switch Back to Main Branch
+git checkout master
+Modify File
+echo "main version" > file1.txt
+git add .
+git commit -m "change in main"
+Merge Branch
+git merge feature
+Display File Content
+cat file1.txt
+Resolve Merge Conflict
+echo "hello from main and feature branch" > file1.txt
+git add .
+git commit -m "resolve merge"
+Check Commit History
+git log
+Git Diff
+git diff
+List Branches
+git branch
+Delete Branch
+git branch -d feature
+Pull from Repository
+git pull origin master
+
+
+Program 3 – Jenkins CI/CD Pipeline
+Install Java
+sudo apt update
+sudo apt install openjdk-21-jre-headless
+Check Java Version
+java -version
+Download Jenkins
+wget https://get.jenkins.io/war-stable/latest/jenkins.war
+List Files
+ls
+Remove Jenkins Files
+sudo rm jenkins.war
+sudo rm -rf ~/.Jenkins
+Run Jenkins Server
+java -jar jenkins.war --httpPort=8082
+Install ngrok
+Update Packages
+sudo apt update
+Install Snap
+sudo apt install snapd -y
+Install ngrok
+sudo snap install ngrok
+Run ngrok
+ngrok http 8082
+
+
+
+
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git url: '',
+                    branch: 'main'
+            }
+        }
+
+        stage('Run Script') {
+            steps {
+                sh 'chmod +x script.sh'
+                sh './script.sh'
+            }
+        }
+    }
+}
+
+
+pipeline {
+    agent any
+
+     stages {
+
+        stage('Clone') {
+            steps {
+                git url: 'https://github.com/yourusername/your-repository.git',
+                    branch: 'main'
+            }
+        }
+
+        stage('Run Python Script') {
+            steps {
+                sh 'python3 --version'
+                sh 'python3 python.py'
+            }
+        }
+
+    }
+}
+
+print("Hello from Jenkins CI/CD Pipeline")
