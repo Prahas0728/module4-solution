@@ -103,7 +103,8 @@ Run ngrok
 ngrok http 8082
 
 
-
+rm -rf /home/student/.jenkins
+student@DBMS45:~$ java -jar jenkins.war.1 --httpPort=8099
 
 
 
